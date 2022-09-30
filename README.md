@@ -6,11 +6,21 @@ Test online for iOS Developer position at Nostra Technology
 
 ### Prerequisite
 
-Add prerequisite here
+Technology | Version
+-- | --
+CocoaPods | 1.10
+Xcode | 12.5
+Swift | 5
+InjectionIII | 4.3.3
 
 ### Dependencies
 
-Add library used here
+Library | Description
+-- | --
+SwiftLint | Code linter
+SnapKit | Auto layout
+netfox | Network debugger
+RxSwift | Reactive library
 
 ### Serve App
 
@@ -24,4 +34,6 @@ https://api.opendota.com/
 
 ### Screenshot
 
-Add screenshots here
+Image | Image
+-- | --
+![image](/screenshots/1.png) | ![image](/screenshots/1.png)
