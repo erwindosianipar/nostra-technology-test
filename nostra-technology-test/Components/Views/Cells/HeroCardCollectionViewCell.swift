@@ -7,30 +7,34 @@
 
 import UIKit
 
-final class HeroCardCollectionViewCell: UICollectionViewCell {
+final class HeroCardCollectionViewCell: UICollectionViewCell, SkeletonView {
     
     private let imageView = UIImageView().then {
-        $0.backgroundColor = .gray
+        $0.backgroundColor = .black.withAlphaComponent(0.2)
     }
     
     private let titleLabel = UILabel().then {
         $0.textAlignment = .center
-        $0.text = "Lorem Ipsum Dolor"
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        commonInit()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupView()
+        commonInit()
     }
     
-    private func setupView() {
-        contentView.addSubviews(imageView, titleLabel)
-        
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.imageView.image = nil
+        self.titleLabel.text = nil
+    }
+    
+    private func commonInit() {
+        self.contentView.addSubviews(imageView, titleLabel)
         imageView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
             $0.height.equalTo(DeviceInformation.screenWidth / 3 - 20)
@@ -42,5 +46,11 @@ final class HeroCardCollectionViewCell: UICollectionViewCell {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(10)
         }
+    }
+    
+    func configure(data: HeroStatsResponseModel) {
+        self.imageView.loadImage(url: "https://api.opendota.com" + data.img)
+        self.titleLabel.text = data.localized_name
+        hideSkeleton()
     }
 }

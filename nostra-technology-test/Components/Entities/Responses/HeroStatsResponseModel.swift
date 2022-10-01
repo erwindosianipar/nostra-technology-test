@@ -5,7 +5,7 @@
 //  Created by Erwindo Sianipar on 30/09/22.
 //
 
-struct HeroStatsDataResponseModel: Decodable {
+struct HeroStatsResponseModel: Decodable, Encodable {
     let id: Int
     let name: String
     let localized_name: String
@@ -14,14 +14,10 @@ struct HeroStatsDataResponseModel: Decodable {
     let roles: [String]
     let img: String
     let icon: String
-    let base_health: Int
-    let base_mana: Int
-    let base_armor: Int
-    let base_attack_min: Int
-    let base_attack_max: Int
-    let move_speed: Int
-}
-
-struct HeroStatsResponseModel: Decodable {
-    let data: [HeroStatsDataResponseModel]
+    let base_health: Float
+    let base_mana: Float
+    let base_armor: Float
+    let base_attack_min: Float
+    let base_attack_max: Float
+    let move_speed: Float
 }

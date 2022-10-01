@@ -33,6 +33,18 @@ internal final class HomeCoordinator: NavigationCoordinator {
     }
     
     func showScreen(identifier: String, navigation: Navigation) {
-        // Implement show screen here
+        switch identifier {
+        case kHomeScreen:
+            switch navigation {
+            case .next(let value):
+                if let result = value as? HeroStatsResponseModel {
+                    push(DetailScreen((result)))
+                }
+            case .prev:
+                return
+            }
+        default:
+            return
+        }
     }
 }

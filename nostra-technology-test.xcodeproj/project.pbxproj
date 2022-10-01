@@ -24,6 +24,11 @@
 		FAEDF6CF28E6B160008C7244 /* OpenDotaEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEDF6CE28E6B160008C7244 /* OpenDotaEndpoint.swift */; };
 		FAEDF6D128E6B30D008C7244 /* HeroStatsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEDF6D028E6B30D008C7244 /* HeroStatsResponseModel.swift */; };
 		FAEDF6D428E6B941008C7244 /* HeroCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEDF6D328E6B941008C7244 /* HeroCardCollectionViewCell.swift */; };
+		FAEDF6D928E6EA9F008C7244 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEDF6D828E6EA9F008C7244 /* DetailViewModel.swift */; };
+		FAEDF6DB28E6EABE008C7244 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEDF6DA28E6EABE008C7244 /* DetailViewController.swift */; };
+		FAEDF6DD28E6EB64008C7244 /* DetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEDF6DC28E6EB64008C7244 /* DetailScreen.swift */; };
+		FAEDF6DF28E7D707008C7244 /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEDF6DE28E7D707008C7244 /* Skeleton.swift */; };
+		FAEDF6E428E7EF20008C7244 /* FilterPillCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEDF6E328E7EF20008C7244 /* FilterPillCollectionViewCell.swift */; };
 		FAF313CA27B7C8D20068C1D4 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF313C927B7C8D20068C1D4 /* HomeCoordinator.swift */; };
 		FAF313CC27B7C8E30068C1D4 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF313CB27B7C8E30068C1D4 /* AppCoordinator.swift */; };
 		FAF313CF27B7CF780068C1D4 /* ScreenResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF313CE27B7CF780068C1D4 /* ScreenResult.swift */; };
@@ -66,6 +71,11 @@
 		FAEDF6CE28E6B160008C7244 /* OpenDotaEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDotaEndpoint.swift; sourceTree = "<group>"; };
 		FAEDF6D028E6B30D008C7244 /* HeroStatsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroStatsResponseModel.swift; sourceTree = "<group>"; };
 		FAEDF6D328E6B941008C7244 /* HeroCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAEDF6D828E6EA9F008C7244 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		FAEDF6DA28E6EABE008C7244 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FAEDF6DC28E6EB64008C7244 /* DetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScreen.swift; sourceTree = "<group>"; };
+		FAEDF6DE28E7D707008C7244 /* Skeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skeleton.swift; sourceTree = "<group>"; };
+		FAEDF6E328E7EF20008C7244 /* FilterPillCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPillCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAF313C927B7C8D20068C1D4 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		FAF313CB27B7C8E30068C1D4 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		FAF313CE27B7CF780068C1D4 /* ScreenResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenResult.swift; sourceTree = "<group>"; };
@@ -148,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				FA94D2BD27B6EBD800458A3F /* Then.swift */,
+				FAEDF6DE28E7D707008C7244 /* Skeleton.swift */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -221,19 +232,23 @@
 			path = "nostra-technology-test";
 			sourceTree = "<group>";
 		};
-		FAC5473528D97FF100AA312B /* ScreenResults */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ScreenResults;
-			sourceTree = "<group>";
-		};
 		FAEDF6D228E6B901008C7244 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				FAEDF6D328E6B941008C7244 /* HeroCardCollectionViewCell.swift */,
+				FAEDF6E328E7EF20008C7244 /* FilterPillCollectionViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		FAEDF6D628E6EA80008C7244 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				FAEDF6D828E6EA9F008C7244 /* DetailViewModel.swift */,
+				FAEDF6DA28E6EABE008C7244 /* DetailViewController.swift */,
+				FAEDF6DC28E6EB64008C7244 /* DetailScreen.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		FAF313C727B7C2820068C1D4 /* Coordinators */ = {
@@ -267,6 +282,7 @@
 		FAF313D627B7D7480068C1D4 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				FAEDF6D628E6EA80008C7244 /* Detail */,
 				FAF313D727B7D74F0068C1D4 /* Home */,
 			);
 			path = Screens;
@@ -311,7 +327,6 @@
 		FAF313F527B82EB10068C1D4 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				FAC5473528D97FF100AA312B /* ScreenResults */,
 				FAF313F627B82EBB0068C1D4 /* Responses */,
 			);
 			path = Entities;
@@ -457,15 +472,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAF313EE27B7FE910068C1D4 /* APIProvider.swift in Sources */,
+				FAEDF6DB28E6EABE008C7244 /* DetailViewController.swift in Sources */,
 				FAC211CB27B680E400C14536 /* ViewController.swift in Sources */,
 				FAF3141427B853E00068C1D4 /* UIView+Indicator.swift in Sources */,
 				FAF313E127B7D8DC0068C1D4 /* HomeScreen.swift in Sources */,
+				FAEDF6DD28E6EB64008C7244 /* DetailScreen.swift in Sources */,
 				FAF3140627B83F3E0068C1D4 /* String+Helper.swift in Sources */,
 				FAF3140E27B83FE20068C1D4 /* Reusable+Helper.swift in Sources */,
 				FAC211C727B680E400C14536 /* AppDelegate.swift in Sources */,
 				FAA5AA7227B8DCA000B4A6B4 /* UIImage+Properties.swift in Sources */,
 				FAEDF6D128E6B30D008C7244 /* HeroStatsResponseModel.swift in Sources */,
 				FAA5AA9227B9785C00B4A6B4 /* NavigationItemRightView.swift in Sources */,
+				FAEDF6E428E7EF20008C7244 /* FilterPillCollectionViewCell.swift in Sources */,
 				FAA5AA7027B8DBD400B4A6B4 /* NavigationItemLeftView.swift in Sources */,
 				FAF313FA27B830EC0068C1D4 /* BaseEndpoint.swift in Sources */,
 				FAF3140A27B83F860068C1D4 /* UITableView+Helper.swift in Sources */,
@@ -484,9 +502,11 @@
 				FAF313DB27B7D79B0068C1D4 /* HomeViewModel.swift in Sources */,
 				FAF3141227B849BC0068C1D4 /* ViewController+Alert.swift in Sources */,
 				FAF313CF27B7CF780068C1D4 /* ScreenResult.swift in Sources */,
+				FAEDF6DF28E7D707008C7244 /* Skeleton.swift in Sources */,
 				FA94D2BE27B6EBD800458A3F /* Then.swift in Sources */,
 				FAA5AA9427B97D5F00B4A6B4 /* UserDefaultConfig.swift in Sources */,
 				FAF313CA27B7C8D20068C1D4 /* HomeCoordinator.swift in Sources */,
+				FAEDF6D928E6EA9F008C7244 /* DetailViewModel.swift in Sources */,
 				FAF313DF27B7D8370068C1D4 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
