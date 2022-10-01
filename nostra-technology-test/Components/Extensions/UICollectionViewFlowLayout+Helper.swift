@@ -8,7 +8,8 @@
 import UIKit
 
 enum UICollectionViewFlowLayoutRowType {
-    case heroCard
+    case pill
+    case card
 }
 
 extension CGSize {
@@ -24,6 +25,10 @@ extension UIEdgeInsets {
     static var defaultEdgeInset: UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
+    
+    static var pillEdgeInset: UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+    }
 }
 
 extension UICollectionViewFlowLayout {
@@ -31,13 +36,17 @@ extension UICollectionViewFlowLayout {
     static func getLayout(type: UICollectionViewFlowLayoutRowType) -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         switch type {
-        case .heroCard:
+        case .pill:
+            layout.itemSize = CGSize(width: 100, height: 30)
+            layout.scrollDirection = .horizontal
+            layout.minimumInteritemSpacing = 5
+            layout.sectionInset = .pillEdgeInset
+        case .card:
             layout.itemSize = .heroCardItemSize
             layout.scrollDirection = .vertical
             layout.minimumInteritemSpacing = 5
             layout.sectionInset = .zero
         }
-        
         return layout
     }
 }
