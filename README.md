@@ -37,3 +37,11 @@ https://api.opendota.com/
 Image | Image | Image
 -- | -- | --
 ![image](/screenshots/1.png) | ![image](/screenshots/2.png) | ![image](/screenshots/3.png)
+
+Image | Image | Image
+-- | -- | --
+![image](/screenshots/4.png) | ![image](/screenshots/5.png) | ![image](/screenshots/6.png)
+
+Image | Image | Image
+-- | -- | --
+![image](/screenshots/7.png) | ![image](/screenshots/8.png) | ![image](/screenshots/9.png)
