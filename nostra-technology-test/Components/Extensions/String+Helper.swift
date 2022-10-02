@@ -23,6 +23,10 @@ extension Date {
 
 extension String {
     
+    func wrapBaseURL() -> String {
+        return "https://api.opendota.com" + self
+    }
+    
     func addWrapper(wrapper: WeatherWrapperString) -> String {
         switch wrapper {
         case .wrap(let first, let last):

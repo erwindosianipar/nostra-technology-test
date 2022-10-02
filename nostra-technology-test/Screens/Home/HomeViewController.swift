@@ -13,6 +13,25 @@ internal final class HomeViewController: ViewController {
     // MARK: - UI Properties
     
     private let informationLabel = UILabel()
+    private let filterButton = UIButton(type: .custom).then {
+        $0.addTarget(self, action: #selector(onTapFilterButton), for: .touchUpInside)
+        $0.backgroundColor = .white
+        $0.setImage(UserDefaultConfig.heroFilter == .default ? .filterCirlce : .filterCircleFill, for: .normal)
+        $0.contentVerticalAlignment = .fill
+        $0.contentHorizontalAlignment = .fill
+        $0.imageView?.contentMode = .scaleAspectFit
+        $0.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+        $0.layer.cornerRadius = 20
+        $0.layer.shadowColor = UIColor.black.cgColor
+        $0.layer.shadowOffset = CGSize(width: 1, height: 1)
+        $0.layer.shadowOpacity = 0.5
+        $0.layer.shadowRadius = 3.0
+    }
+    
+    private lazy var filterViewController = FilterViewController(viewModel: FilterViewModel()).then {
+        $0.delegate = self
+    }
+    
     private lazy var pillCollectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout.getLayout(type: .pill)).then {
@@ -35,6 +54,8 @@ internal final class HomeViewController: ViewController {
     
     private let disposeBag = DisposeBag()
     private var viewModel: HomeViewModel?
+    private var loading = true
+    private var activeFilterRole = ""
     
     init(viewModel: HomeViewModel) {
         super.init(nibName: nil, bundle: nil)
@@ -63,9 +84,14 @@ internal final class HomeViewController: ViewController {
     
     private func setupView() {
         setupLargeTitleAndSearchView()
-        self.view.addSubviews(pillCollectionView, informationLabel, heroCollectionView)
+        self.view.addSubviews(
+            pillCollectionView,
+            informationLabel,
+            heroCollectionView,
+            filterButton
+        )
         pillCollectionView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(40)
         }
@@ -77,11 +103,17 @@ internal final class HomeViewController: ViewController {
             $0.top.equalTo(informationLabel.snp.bottom).offset(20)
             $0.leading.trailing.bottom.equalToSuperview()
         }
+        filterButton.snp.makeConstraints {
+            $0.width.height.equalTo(40)
+            $0.trailing.equalToSuperview().inset(10)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(10)
+        }
         
         fetchAPI()
     }
     
     private func fetchAPI() {
+        self.loading = true
         self.viewModel?.heroStats()
             .asObservable()
             .observe(on: MainScheduler.asyncInstance)
@@ -92,27 +124,67 @@ internal final class HomeViewController: ViewController {
                 }
                 self?.viewModel?.heroes = response
                 self?.informationLabel.text = "Showing \(response.count) heroes"
+                self?.loading = false
                 self?.pillCollectionView.reloadData()
                 self?.heroCollectionView.reloadData()
                 self?.pillCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .top)
             },
             onError: { [weak self] error in
+                self?.loading = false
                 self?.checkInternetConnection(error: error, action: {
                     self?.fetchAPI()
                 })
             })
             .disposed(by: disposeBag)
     }
+    
+    private func updateDataAfterFilterChanged() {
+        guard let model = self.viewModel else {
+            return
+        }
+        model.temp = self.activeFilterRole.isEmpty ? model.heroes : model.heroes.filter {
+            $0.roles.contains(self.activeFilterRole)
+        }
+        self.heroCollectionView.reloadData()
+    }
+    
+    @objc private func onTapFilterButton() {
+        self.present(filterViewController, animated: true, completion: nil)
+    }
+}
+
+extension HomeViewController: FilterViewControllerDelegate {
+    
+    func onDismissViewController() {
+        updateDataAfterFilterChanged()
+        filterButton.setImage(.filterCircleFill, for: .normal)
+        filterViewController.reloadData()
+        filterViewController.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate {
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        filterButton.isHidden = scrollView == heroCollectionView ? true : false
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        filterButton.isHidden = scrollView == heroCollectionView ? decelerate : false
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        filterButton.isHidden = false
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let model = self.viewModel {
             switch collectionView {
             case pillCollectionView:
-                model.temp = indexPath.row == 0 ? model.heroes.sorted { $0.localized_name < $1.localized_name } : model.heroes.filter {
-                    $0.roles.contains(model.roles[indexPath.row])
+                model.temp = []
+                model.temp = indexPath.row == 0 ? model.heroes : model.heroes.filter {
+                    self.activeFilterRole = model.roles[indexPath.row]
+                    return $0.roles.contains(self.activeFilterRole)
                 }
                 self.informationLabel.text = "Showing \(model.temp.count) heroes"
                 self.heroCollectionView.reloadData()
@@ -129,6 +201,9 @@ extension HomeViewController: UICollectionViewDelegate {
 extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if loading {
+            return 15
+        }
         if let model = self.viewModel {
             switch collectionView {
             case pillCollectionView:
@@ -143,6 +218,18 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if loading {
+            switch collectionView {
+            case pillCollectionView:
+                let cell = collectionView.dequeueReusableCell(for: indexPath, cell: FilterPillCollectionViewCell.self)
+                return cell
+            case heroCollectionView:
+                let cell = collectionView.dequeueReusableCell(for: indexPath, cell: HeroCardCollectionViewCell.self)
+                return cell
+            default:
+                return UICollectionViewCell()
+            }
+        }
         if let model = self.viewModel {
             switch collectionView {
             case pillCollectionView:

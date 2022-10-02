@@ -10,6 +10,7 @@ import UIKit
 enum ActionButtonType {
     case add
     case remove
+    case text(String)
 }
 
 protocol NavigationItemRightViewDelegate: AnyObject {
@@ -65,6 +66,8 @@ internal final class NavigationItemRightView: UIView {
         case .add:
             actionImage = .add
         case .remove:
+            actionImage = .remove
+        case .text(let title):
             actionImage = .remove
         }
         

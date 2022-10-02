@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0C179540E72D1865E70C45EB /* Pods_nostra_technology_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C38F600856EE5C9341E362 /* Pods_nostra_technology_test.framework */; };
+		FA02EE9228E9290C00ED0F21 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA02EE9128E9290C00ED0F21 /* FilterViewModel.swift */; };
+		FA02EE9428E9292600ED0F21 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA02EE9328E9292600ED0F21 /* FilterViewController.swift */; };
+		FA02EE9828E990F200ED0F21 /* HeroImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA02EE9728E990F200ED0F21 /* HeroImageTableViewCell.swift */; };
 		FA94D2BE27B6EBD800458A3F /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94D2BD27B6EBD800458A3F /* Then.swift */; };
 		FAA5AA7027B8DBD400B4A6B4 /* NavigationItemLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5AA6F27B8DBD400B4A6B4 /* NavigationItemLeftView.swift */; };
 		FAA5AA7227B8DCA000B4A6B4 /* UIImage+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5AA7127B8DCA000B4A6B4 /* UIImage+Properties.swift */; };
@@ -53,6 +56,9 @@
 		83C38F600856EE5C9341E362 /* Pods_nostra_technology_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nostra_technology_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65EFFF0D05463FD00D5F8FB /* Pods-nostra-technology-test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nostra-technology-test.release.xcconfig"; path = "Target Support Files/Pods-nostra-technology-test/Pods-nostra-technology-test.release.xcconfig"; sourceTree = "<group>"; };
 		ABAB47DEF813A5D4373AC62B /* Pods-nostra-technology-test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nostra-technology-test.debug.xcconfig"; path = "Target Support Files/Pods-nostra-technology-test/Pods-nostra-technology-test.debug.xcconfig"; sourceTree = "<group>"; };
+		FA02EE9128E9290C00ED0F21 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
+		FA02EE9328E9292600ED0F21 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		FA02EE9728E990F200ED0F21 /* HeroImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImageTableViewCell.swift; sourceTree = "<group>"; };
 		FA94D2BD27B6EBD800458A3F /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 		FAA5AA6F27B8DBD400B4A6B4 /* NavigationItemLeftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItemLeftView.swift; sourceTree = "<group>"; };
 		FAA5AA7127B8DCA000B4A6B4 /* UIImage+Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Properties.swift"; sourceTree = "<group>"; };
@@ -129,6 +135,15 @@
 				A65EFFF0D05463FD00D5F8FB /* Pods-nostra-technology-test.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FA02EE9028E928EB00ED0F21 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				FA02EE9128E9290C00ED0F21 /* FilterViewModel.swift */,
+				FA02EE9328E9292600ED0F21 /* FilterViewController.swift */,
+			);
+			path = Filter;
 			sourceTree = "<group>";
 		};
 		FA94D2B127B6E23400458A3F /* Delegate */ = {
@@ -237,6 +252,7 @@
 			children = (
 				FAEDF6D328E6B941008C7244 /* HeroCardCollectionViewCell.swift */,
 				FAEDF6E328E7EF20008C7244 /* FilterPillCollectionViewCell.swift */,
+				FA02EE9728E990F200ED0F21 /* HeroImageTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -282,6 +298,7 @@
 		FAF313D627B7D7480068C1D4 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				FA02EE9028E928EB00ED0F21 /* Filter */,
 				FAEDF6D628E6EA80008C7244 /* Detail */,
 				FAF313D727B7D74F0068C1D4 /* Home */,
 			);
@@ -477,6 +494,7 @@
 				FAF3141427B853E00068C1D4 /* UIView+Indicator.swift in Sources */,
 				FAF313E127B7D8DC0068C1D4 /* HomeScreen.swift in Sources */,
 				FAEDF6DD28E6EB64008C7244 /* DetailScreen.swift in Sources */,
+				FA02EE9228E9290C00ED0F21 /* FilterViewModel.swift in Sources */,
 				FAF3140627B83F3E0068C1D4 /* String+Helper.swift in Sources */,
 				FAF3140E27B83FE20068C1D4 /* Reusable+Helper.swift in Sources */,
 				FAC211C727B680E400C14536 /* AppDelegate.swift in Sources */,
@@ -497,12 +515,14 @@
 				FAEDF6D428E6B941008C7244 /* HeroCardCollectionViewCell.swift in Sources */,
 				FAF3140827B83F680068C1D4 /* AppDelegate+Helper.swift in Sources */,
 				FAA5AA7D27B9088800B4A6B4 /* UICollectionViewFlowLayout+Helper.swift in Sources */,
+				FA02EE9828E990F200ED0F21 /* HeroImageTableViewCell.swift in Sources */,
 				FAF313D127B7CFBC0068C1D4 /* NavigationEvent.swift in Sources */,
 				FAF313D327B7D0830068C1D4 /* Screen.swift in Sources */,
 				FAF313DB27B7D79B0068C1D4 /* HomeViewModel.swift in Sources */,
 				FAF3141227B849BC0068C1D4 /* ViewController+Alert.swift in Sources */,
 				FAF313CF27B7CF780068C1D4 /* ScreenResult.swift in Sources */,
 				FAEDF6DF28E7D707008C7244 /* Skeleton.swift in Sources */,
+				FA02EE9428E9292600ED0F21 /* FilterViewController.swift in Sources */,
 				FA94D2BE27B6EBD800458A3F /* Then.swift in Sources */,
 				FAA5AA9427B97D5F00B4A6B4 /* UserDefaultConfig.swift in Sources */,
 				FAF313CA27B7C8D20068C1D4 /* HomeCoordinator.swift in Sources */,

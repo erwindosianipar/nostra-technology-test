@@ -7,10 +7,26 @@
 
 import RxSwift
 
-internal final class HomeViewModel {
+class HomeViewModel {
     
     var roles: [String] = []
-    var temp: [HeroStatsResponseModel] = []
+    var temp: [HeroStatsResponseModel] = [] {
+        didSet {
+            switch UserDefaultConfig.heroFilter {
+            case .default:
+                self.temp = self.temp.sorted { $0.localized_name < $1.localized_name }
+            case .baseAttack:
+                self.temp = self.temp.sorted { $0.base_attack_min < $1.base_attack_min }
+            case .baseHealt:
+                self.temp = self.temp.sorted { $0.base_health < $1.base_health }
+            case .baseMana:
+                self.temp = self.temp.sorted { $0.base_mana < $1.base_mana }
+            case .baseSpeed:
+                self.temp = self.temp.sorted { $0.move_speed < $1.move_speed }
+            }
+        }
+    }
+    
     var heroes: [HeroStatsResponseModel] = [] {
         didSet {
             self.roles = []
@@ -19,7 +35,7 @@ internal final class HomeViewModel {
                 self.roles += hero.roles
             }
             self.roles = Array(Set(self.roles)).sorted { $0 < $1 }
-            self.temp = heroes.sorted { $0.localized_name < $1.localized_name }
+            self.temp = heroes
         }
     }
     

@@ -41,6 +41,8 @@ final class FilterPillCollectionViewCell: UICollectionViewCell, SkeletonView {
         button.snp.makeConstraints {
             $0.top.leading.trailing.bottom.equalToSuperview()
         }
+        
+        showSkeleton()
     }
     
     func configure(data: String) {
