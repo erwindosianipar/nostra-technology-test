@@ -12,4 +12,12 @@ extension UIImage {
     static var chevronLeft: UIImage? {
         return UIImage(systemName: "chevron.left")
     }
+    
+    static var filterCirlce: UIImage? {
+        return UIImage(systemName: "line.horizontal.3.decrease.circle")
+    }
+    
+    static var filterCircleFill: UIImage? {
+        return UIImage(systemName: "line.horizontal.3.decrease.circle.fill")
+    }
 }

@@ -46,10 +46,12 @@ final class HeroCardCollectionViewCell: UICollectionViewCell, SkeletonView {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(10)
         }
+        
+        showSkeleton()
     }
     
     func configure(data: HeroStatsResponseModel) {
-        self.imageView.loadImage(url: "https://api.opendota.com" + data.img)
+        self.imageView.loadImage(url: data.img.wrapBaseURL())
         self.titleLabel.text = data.localized_name
         hideSkeleton()
     }

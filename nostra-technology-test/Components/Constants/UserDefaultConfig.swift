@@ -38,6 +38,6 @@ struct UserDefault<T: Codable> {
 
 internal struct UserDefaultConfig {
     
-    @UserDefault(key: "key", value: "value")
-    static var key: String
+    @UserDefault(key: "heroFilter", value: HeroFilter.default)
+    static var heroFilter: HeroFilter
 }

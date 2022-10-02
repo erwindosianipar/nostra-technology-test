@@ -9,7 +9,7 @@ import UIKit
 
 extension UIImageView {
     
-    func loadImage(url: String) {
+    func loadImage(url: String, completion: (() -> Void)? = nil) {
         guard let url = URL(string: url) else {
             return
         }
@@ -19,6 +19,7 @@ extension UIImageView {
                 if let image = UIImage(data: imageData) {
                     DispatchQueue.main.async {
                         self?.image = image
+                        completion?()
                     }
                 }
             }

@@ -16,7 +16,7 @@ extension CGSize {
     
     static var heroCardItemSize: CGSize {
         let itemWidth = DeviceInformation.screenWidth / 3 - 10
-        return CGSize(width: itemWidth, height: DeviceInformation.screenWidth / 3 - 20)
+        return CGSize(width: itemWidth, height: DeviceInformation.screenWidth / (UIDevice.current.orientation == .portrait ? 3 : 4) - 20)
     }
 }
 
